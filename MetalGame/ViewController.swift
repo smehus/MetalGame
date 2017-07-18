@@ -10,8 +10,7 @@ import MetalKit
 
 internal final class ViewController: UIViewController {
     
-    var commandQueue: MTLCommandQueue!
-    var device: MTLDevice!
+    var renderer: Renderer?
     
     var metalView: MTKView {
         return view as! MTKView
@@ -20,35 +19,15 @@ internal final class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        device = MTLCreateSystemDefaultDevice()
-        metalView.device = device
-        metalView.clearColor = Colors.skyBlue.mtlColor
-        metalView.delegate = self
-        commandQueue = device.makeCommandQueue()
-        
-    }
-    
-}
-
-extension ViewController: MTKViewDelegate {
-    func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
-        
-    }
-    
-    func draw(in view: MTKView) {
-        guard
-            let drawable = view.currentDrawable,
-            let descriptor = view.currentRenderPassDescriptor
-        else {
-            return
+        guard let device = MTLCreateSystemDefaultDevice() else {
+            fatalError()
         }
         
-        let commandBuffer = commandQueue.makeCommandBuffer()
-        let commandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: descriptor)
+        metalView.device = device
+        metalView.clearColor = Colors.skyBlue.mtlColor
         
-        commandEncoder.endEncoding()
-        commandBuffer.present(drawable)
-        commandBuffer.commit()
+        renderer = Renderer(device: device)
+        metalView.delegate = renderer
     }
+    
 }
-
