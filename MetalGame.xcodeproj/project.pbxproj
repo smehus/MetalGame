@@ -14,6 +14,7 @@
 		A540955B1F1E33E000AB4D05 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A54095591F1E33E000AB4D05 /* LaunchScreen.storyboard */; };
 		A54095641F1E35C500AB4D05 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54095631F1E35C500AB4D05 /* Types.swift */; };
 		A54095661F1E3B9000AB4D05 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54095651F1E3B9000AB4D05 /* Renderer.swift */; };
+		A54095691F1E427D00AB4D05 /* Shader.metal in Sources */ = {isa = PBXBuildFile; fileRef = A54095681F1E427D00AB4D05 /* Shader.metal */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		A540955C1F1E33E000AB4D05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A54095631F1E35C500AB4D05 /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		A54095651F1E3B9000AB4D05 /* Renderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
+		A54095681F1E427D00AB4D05 /* Shader.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Shader.metal; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,8 +60,9 @@
 		A540954F1F1E33E000AB4D05 /* MetalGame */ = {
 			isa = PBXGroup;
 			children = (
-				A54095621F1E35B800AB4D05 /* Enums */,
+				A54095671F1E426D00AB4D05 /* Shaders */,
 				A54095651F1E3B9000AB4D05 /* Renderer.swift */,
+				A54095631F1E35C500AB4D05 /* Types.swift */,
 				A54095521F1E33E000AB4D05 /* ViewController.swift */,
 				A54095541F1E33E000AB4D05 /* Main.storyboard */,
 				A54095571F1E33E000AB4D05 /* Assets.xcassets */,
@@ -70,12 +73,12 @@
 			path = MetalGame;
 			sourceTree = "<group>";
 		};
-		A54095621F1E35B800AB4D05 /* Enums */ = {
+		A54095671F1E426D00AB4D05 /* Shaders */ = {
 			isa = PBXGroup;
 			children = (
-				A54095631F1E35C500AB4D05 /* Types.swift */,
+				A54095681F1E427D00AB4D05 /* Shader.metal */,
 			);
-			name = Enums;
+			name = Shaders;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,6 +157,7 @@
 				A54095661F1E3B9000AB4D05 /* Renderer.swift in Sources */,
 				A54095641F1E35C500AB4D05 /* Types.swift in Sources */,
 				A54095531F1E33E000AB4D05 /* ViewController.swift in Sources */,
+				A54095691F1E427D00AB4D05 /* Shader.metal in Sources */,
 				A54095511F1E33E000AB4D05 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

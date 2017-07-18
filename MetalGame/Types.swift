@@ -18,3 +18,9 @@ enum Colors {
         }
     }
 }
+
+
+struct Vertex {
+    var position: float4
+    var color: float4
+}
