@@ -9,15 +9,24 @@
 #include <metal_stdlib>
 using namespace metal;
 
-struct Vertex {
+struct VertexIn {
+    float4 position [[attribute(0)]];
+    float4 color [[attribute(1)]] ;
+};
+
+struct VertexOut {
     float4 position [[position]];
     float4 color;
 };
 
-vertex Vertex vertex_shader(device Vertex *vertices [[ buffer(0) ]], uint vid [[ vertex_id ]]) {
-    return vertices[vid];
+vertex VertexOut vertex_shader(const VertexIn vertexIn [[ stage_in ]]) {
+    VertexOut vertexOut;
+    vertexOut.position = vertexIn.position;
+    vertexOut.color = vertexIn.color;
+    
+    return vertexOut;
 }
 
-fragment float4 fragment_shader(Vertex inVertex [[stage_in]]) {
+fragment float4 fragment_shader(VertexOut inVertex [[stage_in]]) {
     return inVertex.color;
 }

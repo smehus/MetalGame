@@ -21,6 +21,6 @@ enum Colors {
 
 
 struct Vertex {
-    var position: float4
+    var position: float3
     var color: float4
 }
