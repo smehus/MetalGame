@@ -27,6 +27,8 @@ internal final class ViewController: UIViewController {
         metalView.clearColor = Colors.skyBlue.mtlColor
         
         renderer = Renderer(device: device)
+        renderer?.scene = GameScene(device: device, size: view.bounds.size)
+        
         metalView.delegate = renderer
     }
     

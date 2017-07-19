@@ -15,6 +15,10 @@
 		A54095641F1E35C500AB4D05 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54095631F1E35C500AB4D05 /* Types.swift */; };
 		A54095661F1E3B9000AB4D05 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54095651F1E3B9000AB4D05 /* Renderer.swift */; };
 		A54095691F1E427D00AB4D05 /* Shader.metal in Sources */ = {isa = PBXBuildFile; fileRef = A54095681F1E427D00AB4D05 /* Shader.metal */; };
+		A540956D1F1F86B000AB4D05 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540956C1F1F86B000AB4D05 /* Node.swift */; };
+		A540956F1F1F876600AB4D05 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540956E1F1F876600AB4D05 /* Scene.swift */; };
+		A54095721F1F87E000AB4D05 /* Floor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54095711F1F87E000AB4D05 /* Floor.swift */; };
+		A54095741F1F88DD00AB4D05 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54095731F1F88DD00AB4D05 /* GameScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +32,10 @@
 		A54095631F1E35C500AB4D05 /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		A54095651F1E3B9000AB4D05 /* Renderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
 		A54095681F1E427D00AB4D05 /* Shader.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Shader.metal; sourceTree = "<group>"; };
+		A540956C1F1F86B000AB4D05 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		A540956E1F1F876600AB4D05 /* Scene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
+		A54095711F1F87E000AB4D05 /* Floor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Floor.swift; sourceTree = "<group>"; };
+		A54095731F1F88DD00AB4D05 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +68,7 @@
 		A540954F1F1E33E000AB4D05 /* MetalGame */ = {
 			isa = PBXGroup;
 			children = (
+				A54095701F1F87C000AB4D05 /* Nodes */,
 				A54095671F1E426D00AB4D05 /* Shaders */,
 				A54095651F1E3B9000AB4D05 /* Renderer.swift */,
 				A54095631F1E35C500AB4D05 /* Types.swift */,
@@ -79,6 +88,17 @@
 				A54095681F1E427D00AB4D05 /* Shader.metal */,
 			);
 			name = Shaders;
+			sourceTree = "<group>";
+		};
+		A54095701F1F87C000AB4D05 /* Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				A540956C1F1F86B000AB4D05 /* Node.swift */,
+				A540956E1F1F876600AB4D05 /* Scene.swift */,
+				A54095711F1F87E000AB4D05 /* Floor.swift */,
+				A54095731F1F88DD00AB4D05 /* GameScene.swift */,
+			);
+			name = Nodes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,9 +174,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A54095721F1F87E000AB4D05 /* Floor.swift in Sources */,
 				A54095661F1E3B9000AB4D05 /* Renderer.swift in Sources */,
 				A54095641F1E35C500AB4D05 /* Types.swift in Sources */,
+				A54095741F1F88DD00AB4D05 /* GameScene.swift in Sources */,
 				A54095531F1E33E000AB4D05 /* ViewController.swift in Sources */,
+				A540956D1F1F86B000AB4D05 /* Node.swift in Sources */,
+				A540956F1F1F876600AB4D05 /* Scene.swift in Sources */,
 				A54095691F1E427D00AB4D05 /* Shader.metal in Sources */,
 				A54095511F1E33E000AB4D05 /* AppDelegate.swift in Sources */,
 			);
@@ -324,6 +348,7 @@
 				A54095611F1E33E000AB4D05 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

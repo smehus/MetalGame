@@ -26,15 +26,9 @@ internal final class Renderer: NSObject {
     
     var commandQueue: MTLCommandQueue!
     var device: MTLDevice!
+    var scene: Scene?
     
-    fileprivate var vertexBuffer: MTLBuffer?
     fileprivate var pipelineState: MTLRenderPipelineState?
-    
-    fileprivate var vertices: [Vertex] = [
-        Vertex(position: float3(0, -1, 0), color: float4(1, 0, 0, 1)),
-        Vertex(position: float3(-1, 1, 0), color: float4(0, 1, 0, 1)),
-        Vertex(position: float3(1, 1, 0), color: float4(0, 0, 1, 1)),
-    ]
     
     init(device: MTLDevice) {
         self.device = device
@@ -42,7 +36,6 @@ internal final class Renderer: NSObject {
         
         super.init()
         
-        buildBuffers()
         buildPipelineState()
     }
     
@@ -60,10 +53,6 @@ internal final class Renderer: NSObject {
         descriptor.layouts[0].stride = MemoryLayout<Vertex>.stride
         
         return descriptor
-    }
-    
-    private func buildBuffers() {
-        vertexBuffer = device.makeBuffer(bytes: vertices, length: MemoryLayout<Vertex>.stride * vertices.count, options: [])
     }
     
     private func buildPipelineState() {
@@ -87,7 +76,6 @@ internal final class Renderer: NSObject {
             assertionFailure("Failed to create pipeline state: \(error.localizedDescription)")
         }
     }
-    
 }
 
 extension Renderer: MTKViewDelegate {
@@ -113,11 +101,8 @@ extension Renderer: MTKViewDelegate {
         // Configure shaders
         commandEncoder.setRenderPipelineState(pipeline)
         
-        // method is used to map from the MTLBuffer objects we created earlier to the parameters of the vertex function in our shader code.
-        commandEncoder.setVertexBuffer(vertexBuffer, offset: 0, at: 0)
-        
-        // encode a request to draw
-        commandEncoder.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: vertices.count)
+        let delta = 1 / Float(view.preferredFramesPerSecond)
+        scene?.render(with: commandEncoder, delta: delta)
         
         commandEncoder.endEncoding()
         commandBuffer.present(drawable)
