@@ -24,3 +24,17 @@ struct Vertex {
     var position: float3
     var color: float4
 }
+
+enum ShaderFunction {
+    case vertex
+    case fragment
+    
+    var name: String {
+        switch self {
+        case .vertex:
+            return "vertex_shader"
+        case .fragment:
+            return "fragment_shader"
+        }
+    }
+}

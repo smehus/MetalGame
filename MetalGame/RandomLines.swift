@@ -11,8 +11,12 @@ import MetalKit
 class RandomLines: Node {
     
     init(device: MTLDevice) {
+        super.init()
         
+    
     }
+    
+    
 }
 
 
