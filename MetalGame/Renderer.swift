@@ -102,7 +102,7 @@ extension Renderer: MTKViewDelegate {
         commandEncoder.setRenderPipelineState(pipeline)
         
         let delta = 1 / Float(view.preferredFramesPerSecond)
-        scene?.render(with: commandEncoder, delta: delta)
+        scene?.render(with: commandEncoder, deltaTime: delta)
         
         commandEncoder.endEncoding()
         commandBuffer.present(drawable)

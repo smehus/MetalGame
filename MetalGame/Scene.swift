@@ -18,4 +18,12 @@ class Scene: Node {
         
         super.init()
     }
+
+    
+    /// Rendering command used on scenes
+    func render(with commandEncoder: MTLRenderCommandEncoder, deltaTime: Float) {
+        for child in children {
+            child.render(with: commandEncoder)
+        }
+    }
 }

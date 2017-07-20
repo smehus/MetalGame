@@ -16,9 +16,15 @@ class Node {
         children.append(child)
     }
     
-    func render(with commandEncoder: MTLRenderCommandEncoder, delta: Float) {
+    func render(with commandEncoder: MTLRenderCommandEncoder) {
         for child in children {
-            child.render(with: commandEncoder, delta: delta)
+            /// Recursively calls this same function in order to climb down the ladder - eventually calling the perform render on all nodes
+            /// Some nodes don't want to be renderd. i.e. parent container nodes
+            child.render(with: commandEncoder)
+        }
+        
+        if let renderable = self as? Renderable {
+            renderable.performRender(with: commandEncoder)
         }
     }
 }
