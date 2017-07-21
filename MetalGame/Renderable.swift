@@ -17,13 +17,14 @@ protocol Renderable: class {
     var vertexShader: ShaderFunction { get set }
     var fragmentShader: ShaderFunction { get set }
     
-    func performRender(with commandBuffer: MTLRenderCommandEncoder)
+    func performRender(with commandEncoder: MTLRenderCommandEncoder)
     func buildPipelineState(device: MTLDevice)
 }
 
 extension Renderable {
     
     func buildBuffers(device: MTLDevice) {
+        print("VERTICES: \(vertices.count)")
         vertexBuffer = device.makeBuffer(bytes: vertices, length: MemoryLayout<Vertex>.stride * vertices.count, options: [])
     }
     

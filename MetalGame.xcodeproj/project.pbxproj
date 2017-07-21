@@ -21,6 +21,7 @@
 		A54095741F1F88DD00AB4D05 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54095731F1F88DD00AB4D05 /* GameScene.swift */; };
 		A54095761F20D39000AB4D05 /* RandomLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54095751F20D39000AB4D05 /* RandomLines.swift */; };
 		A54095781F20D3DD00AB4D05 /* Renderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54095771F20D3DD00AB4D05 /* Renderable.swift */; };
+		A5EBEA191F221F9800B68E2E /* DefaultVertexDescriptorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EBEA181F221F9800B68E2E /* DefaultVertexDescriptorProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		A54095731F1F88DD00AB4D05 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		A54095751F20D39000AB4D05 /* RandomLines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomLines.swift; sourceTree = "<group>"; };
 		A54095771F20D3DD00AB4D05 /* Renderable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderable.swift; sourceTree = "<group>"; };
+		A5EBEA181F221F9800B68E2E /* DefaultVertexDescriptorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultVertexDescriptorProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 				A54095701F1F87C000AB4D05 /* Nodes */,
 				A54095671F1E426D00AB4D05 /* Shaders */,
 				A54095651F1E3B9000AB4D05 /* Renderer.swift */,
+				A5EBEA181F221F9800B68E2E /* DefaultVertexDescriptorProtocol.swift */,
 				A54095631F1E35C500AB4D05 /* Types.swift */,
 				A54095771F20D3DD00AB4D05 /* Renderable.swift */,
 				A54095521F1E33E000AB4D05 /* ViewController.swift */,
@@ -184,6 +187,7 @@
 				A54095661F1E3B9000AB4D05 /* Renderer.swift in Sources */,
 				A54095761F20D39000AB4D05 /* RandomLines.swift in Sources */,
 				A54095641F1E35C500AB4D05 /* Types.swift in Sources */,
+				A5EBEA191F221F9800B68E2E /* DefaultVertexDescriptorProtocol.swift in Sources */,
 				A54095741F1F88DD00AB4D05 /* GameScene.swift in Sources */,
 				A54095781F20D3DD00AB4D05 /* Renderable.swift in Sources */,
 				A54095531F1E33E000AB4D05 /* ViewController.swift in Sources */,

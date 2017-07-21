@@ -10,13 +10,12 @@ import MetalKit
 
 class GameScene: Scene {
     
-    var floor: Floor
+    var floor: RandomLines
     
     override init(device: MTLDevice, size: CGSize) {
-        floor = Floor(device: device)
+        floor = RandomLines(device: device)
         super.init(device: device, size: size)
         
         add(floor)
     }
-    
 }
