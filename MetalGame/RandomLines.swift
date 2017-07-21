@@ -8,15 +8,33 @@
 
 import MetalKit
 
-class RandomLines: Node {
+class RandomLines: Node, Renderable {
+    
+    var vertices: [Vertex] = []
+    var vertexShader: ShaderFunction = .vertex
+    var fragmentShader: ShaderFunction = .fragment
     
     init(device: MTLDevice) {
         super.init()
-        
-    
+        buildVertices()
+        buildBuffers(device: device)
+        buildPipelineState(device: device)
     }
     
     
+    private func buildVertices() {
+        
+    }
+    
+    
+    func performRender(with commandBuffer: MTLRenderCommandEncoder) {
+        guard let pipeline = pipelineState else {
+            assertionFailure()
+            return
+        }
+        
+        
+    }
 }
 
 

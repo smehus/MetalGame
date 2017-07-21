@@ -100,8 +100,8 @@
 			children = (
 				A540956C1F1F86B000AB4D05 /* Node.swift */,
 				A540956E1F1F876600AB4D05 /* Scene.swift */,
-				A54095711F1F87E000AB4D05 /* Floor.swift */,
 				A54095731F1F88DD00AB4D05 /* GameScene.swift */,
+				A54095711F1F87E000AB4D05 /* Floor.swift */,
 				A54095751F20D39000AB4D05 /* RandomLines.swift */,
 			);
 			name = Nodes;

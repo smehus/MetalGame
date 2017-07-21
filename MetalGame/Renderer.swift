@@ -42,6 +42,8 @@ extension Renderer: MTKViewDelegate {
         let commandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: descriptor)
         
         let delta = 1 / Float(view.preferredFramesPerSecond)
+        
+        // Draws the scene - which draws all of its children - then renders any Renderable
         scene?.render(with: commandEncoder, deltaTime: delta)
         
         commandEncoder.endEncoding()
