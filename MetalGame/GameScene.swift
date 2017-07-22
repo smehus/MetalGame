@@ -18,4 +18,9 @@ class GameScene: Scene {
         
         add(model)
     }
+    
+    override func update(with deltaTime: Float) {
+        model.rotation.x += deltaTime
+        model.rotation.y += deltaTime
+    }
 }
