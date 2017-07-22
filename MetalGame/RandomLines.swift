@@ -20,7 +20,7 @@ extension Float {
     }
 }
 
-class RandomLines: Node, Renderable, DefaultVertexDescriptorProtocol {
+final class RandomLines: Node, Renderable, DefaultVertexDescriptorProtocol {
     
     var vertices: [Vertex] = []
     var vertexBuffer: MTLBuffer?
@@ -35,6 +35,12 @@ class RandomLines: Node, Renderable, DefaultVertexDescriptorProtocol {
         buildBuffers(device: device)
         buildPipelineState(device: device)
     }
+    
+    func buildBuffers(device: MTLDevice) {
+        print("VERTICES: \(vertices.count)")
+        vertexBuffer = device.makeBuffer(bytes: vertices, length: MemoryLayout<Vertex>.stride * vertices.count, options: [])
+    }
+    
     
     private func buildVertices() {
         
@@ -68,7 +74,7 @@ class RandomLines: Node, Renderable, DefaultVertexDescriptorProtocol {
         
         hillKeyPoints[kNumHillKeyPoints - 1] = Vertex(position: float3(1, startingY, 0), color: float4(1, 0, 0, 1))
         
-        // Trying to draw smooth hills.... and failing
+        
         for i in 0..<kNumHillKeyPoints {
             guard hillKeyPoints.indices.contains(i + 1) else { continue }
             let p0 = hillKeyPoints[i]
@@ -82,6 +88,7 @@ class RandomLines: Node, Renderable, DefaultVertexDescriptorProtocol {
             let g = Float.random()
             let b = Float.random()
             
+            // Adding 100(kNumHillSmoothSegments> triangles in between current point and next point
             for j in 0..<kNumHillSmoothSegments {
                 let alpha: Float = Float(j) / Float(kNumHillSmoothSegments - 1)
                 let x: Float = ((1 - alpha) * p0.position.x) + (alpha * p1.position.x)
@@ -93,6 +100,7 @@ class RandomLines: Node, Renderable, DefaultVertexDescriptorProtocol {
             }
         }
         
+        // Adding the paired triangle for each smooth triangle to extend the strip to the floor of the screen
         for (index, point) in hillSmoothPoints.enumerated() {
             hillVertices[index * 2] = point
             hillVertices[(index * 2) + 1] = Vertex(position: float3(point.position.x, -1, 0), color: point.color)

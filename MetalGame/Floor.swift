@@ -8,7 +8,7 @@
 
 import MetalKit
 
-class Floor: Node, Renderable, DefaultVertexDescriptorProtocol {
+final class Floor: Node, Renderable, DefaultVertexDescriptorProtocol {
     
     var vertexBuffer: MTLBuffer?
     var pipelineState: MTLRenderPipelineState?
@@ -27,6 +27,12 @@ class Floor: Node, Renderable, DefaultVertexDescriptorProtocol {
         buildBuffers(device: device)
         buildPipelineState(device: device)
     }
+    
+    func buildBuffers(device: MTLDevice) {
+        print("VERTICES: \(vertices.count)")
+        vertexBuffer = device.makeBuffer(bytes: vertices, length: MemoryLayout<Vertex>.stride * vertices.count, options: [])
+    }
+    
     
     func performRender(with commandEncoder: MTLRenderCommandEncoder) {
         guard let pipeline = pipelineState else { return }

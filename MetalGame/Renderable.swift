@@ -23,11 +23,6 @@ protocol Renderable: class {
 
 extension Renderable {
     
-    func buildBuffers(device: MTLDevice) {
-        print("VERTICES: \(vertices.count)")
-        vertexBuffer = device.makeBuffer(bytes: vertices, length: MemoryLayout<Vertex>.stride * vertices.count, options: [])
-    }
-    
     func buildPipelineState(device: MTLDevice) {
         let library = device.newDefaultLibrary()
         let vertexFunction = library?.makeFunction(name: vertexShader.name)

@@ -21,6 +21,7 @@
 		A54095741F1F88DD00AB4D05 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54095731F1F88DD00AB4D05 /* GameScene.swift */; };
 		A54095761F20D39000AB4D05 /* RandomLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54095751F20D39000AB4D05 /* RandomLines.swift */; };
 		A54095781F20D3DD00AB4D05 /* Renderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54095771F20D3DD00AB4D05 /* Renderable.swift */; };
+		A58723901F23E727007A5F66 /* Cube.swift in Sources */ = {isa = PBXBuildFile; fileRef = A587238F1F23E727007A5F66 /* Cube.swift */; };
 		A5EBEA191F221F9800B68E2E /* DefaultVertexDescriptorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EBEA181F221F9800B68E2E /* DefaultVertexDescriptorProtocol.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +42,7 @@
 		A54095731F1F88DD00AB4D05 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		A54095751F20D39000AB4D05 /* RandomLines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomLines.swift; sourceTree = "<group>"; };
 		A54095771F20D3DD00AB4D05 /* Renderable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderable.swift; sourceTree = "<group>"; };
+		A587238F1F23E727007A5F66 /* Cube.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cube.swift; sourceTree = "<group>"; };
 		A5EBEA181F221F9800B68E2E /* DefaultVertexDescriptorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultVertexDescriptorProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,8 +106,9 @@
 				A540956C1F1F86B000AB4D05 /* Node.swift */,
 				A540956E1F1F876600AB4D05 /* Scene.swift */,
 				A54095731F1F88DD00AB4D05 /* GameScene.swift */,
-				A54095711F1F87E000AB4D05 /* Floor.swift */,
 				A54095751F20D39000AB4D05 /* RandomLines.swift */,
+				A54095711F1F87E000AB4D05 /* Floor.swift */,
+				A587238F1F23E727007A5F66 /* Cube.swift */,
 			);
 			name = Nodes;
 			sourceTree = "<group>";
@@ -190,6 +193,7 @@
 				A5EBEA191F221F9800B68E2E /* DefaultVertexDescriptorProtocol.swift in Sources */,
 				A54095741F1F88DD00AB4D05 /* GameScene.swift in Sources */,
 				A54095781F20D3DD00AB4D05 /* Renderable.swift in Sources */,
+				A58723901F23E727007A5F66 /* Cube.swift in Sources */,
 				A54095531F1E33E000AB4D05 /* ViewController.swift in Sources */,
 				A540956D1F1F86B000AB4D05 /* Node.swift in Sources */,
 				A540956F1F1F876600AB4D05 /* Scene.swift in Sources */,
