@@ -116,7 +116,7 @@ class RandomLines: Node, Renderable, DefaultVertexDescriptorProtocol {
     }
 }
 
-extension Vertex: DefaultValuable {
+extension Vertex {
     static func defaultValue() -> Vertex {
         return Vertex(position: float3(0, 0, 0), color: float4(0, 0, 0, 1))
     }
@@ -128,21 +128,5 @@ extension Vertex: DefaultValuable {
         }
         
         return values
-    }
-}
-
-protocol DefaultValuable {
-    static func defaultValue() -> Self
-}
-
-extension Array {
-    static func DefaultValues<T: DefaultValuable>(num: Int) -> [T] {
-        var what: [T] = []
-        for _ in 0..<num {
-            let v = T.defaultValue()
-            what.append(v)
-        }
-        
-        return what
     }
 }
