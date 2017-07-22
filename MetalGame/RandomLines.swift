@@ -8,6 +8,14 @@
 
 import MetalKit
 
+
+extension Float {
+    static func random() -> Float {
+        let floatValue = Float(arc4random()) / Float(UInt32.max)
+        return  arc4random_uniform(2) == 0 ? floatValue : -floatValue
+    }
+}
+
 class RandomLines: Node, Renderable, DefaultVertexDescriptorProtocol {
     
     var vertices: [Vertex] = []
@@ -25,10 +33,14 @@ class RandomLines: Node, Renderable, DefaultVertexDescriptorProtocol {
     }
     
     private func buildVertices() {
-        for i in stride(from: -1, to: 1, by: 0.1) {
+        
+        for i in stride(from: -1, through: 1, by: 0.1) {
             let point = Float(i)
-            let vert = Vertex(position: float3(point, point, 0), color: float4(1, 0, 0, 1))
-            let vert2 = Vertex(position: float3(point, -1, 0), color: float4(1, 0, 0, 1))
+            let r = Float.random()
+            let g = Float.random()
+            let b = Float.random()
+            let vert = Vertex(position: float3(point, r, 0), color: float4(r, g, b, 1))
+            let vert2 = Vertex(position: float3(point, -1, 0), color: float4(r, g, b, 1))
             vertices.append(vert)
             vertices.append(vert2)
         }
