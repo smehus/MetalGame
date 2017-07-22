@@ -64,8 +64,12 @@ final class Cube: Node, Renderable, DefaultVertexDescriptorProtocol {
         commandEncoder.setRenderPipelineState(pipeline)
         
         commandEncoder.setVertexBuffer(vertexBuffer, offset: 0, at: 0)
-        //modelConstants.modelViewMatrix = parentModelViewMatrix
+        
+        modelConstants.modelViewMatrix = parentModelViewMatrix
         commandEncoder.setVertexBytes(&modelConstants, length: MemoryLayout<ModelConstants>.stride, at: 1)
+        
+        commandEncoder.setFrontFacing(.counterClockwise)
+        commandEncoder.setCullMode(.back)
         
         commandEncoder.drawIndexedPrimitives(type: .triangle, indexCount: indices.count, indexType: .uint16, indexBuffer: idxBuffer, indexBufferOffset: 0)
     }
