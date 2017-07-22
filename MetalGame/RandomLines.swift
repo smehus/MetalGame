@@ -76,6 +76,7 @@ class RandomLines: Node, Renderable, DefaultVertexDescriptorProtocol {
                 let smoothVertex = Vertex(position: float3(x, y, 0), color: float4(1, 0, 0, 1))
                 let bottomSmooth = Vertex(position: float3(x, -1, 0), color: float4(1, 0, 0, 1))
                 smoothPoints.append(contentsOf: [smoothVertex, bottomSmooth])
+                
             }
         }
         
