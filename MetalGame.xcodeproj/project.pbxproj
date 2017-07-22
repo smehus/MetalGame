@@ -22,6 +22,7 @@
 		A54095761F20D39000AB4D05 /* RandomLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54095751F20D39000AB4D05 /* RandomLines.swift */; };
 		A54095781F20D3DD00AB4D05 /* Renderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54095771F20D3DD00AB4D05 /* Renderable.swift */; };
 		A58723901F23E727007A5F66 /* Cube.swift in Sources */ = {isa = PBXBuildFile; fileRef = A587238F1F23E727007A5F66 /* Cube.swift */; };
+		A58723921F23ED84007A5F66 /* MatrixMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58723911F23ED84007A5F66 /* MatrixMath.swift */; };
 		A5EBEA191F221F9800B68E2E /* DefaultVertexDescriptorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EBEA181F221F9800B68E2E /* DefaultVertexDescriptorProtocol.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		A54095751F20D39000AB4D05 /* RandomLines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomLines.swift; sourceTree = "<group>"; };
 		A54095771F20D3DD00AB4D05 /* Renderable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderable.swift; sourceTree = "<group>"; };
 		A587238F1F23E727007A5F66 /* Cube.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cube.swift; sourceTree = "<group>"; };
+		A58723911F23ED84007A5F66 /* MatrixMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatrixMath.swift; sourceTree = "<group>"; };
 		A5EBEA181F221F9800B68E2E /* DefaultVertexDescriptorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultVertexDescriptorProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -76,6 +78,7 @@
 		A540954F1F1E33E000AB4D05 /* MetalGame */ = {
 			isa = PBXGroup;
 			children = (
+				A58723931F23EE92007A5F66 /* Libraries */,
 				A54095701F1F87C000AB4D05 /* Nodes */,
 				A54095671F1E426D00AB4D05 /* Shaders */,
 				A54095651F1E3B9000AB4D05 /* Renderer.swift */,
@@ -111,6 +114,14 @@
 				A587238F1F23E727007A5F66 /* Cube.swift */,
 			);
 			name = Nodes;
+			sourceTree = "<group>";
+		};
+		A58723931F23EE92007A5F66 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				A58723911F23ED84007A5F66 /* MatrixMath.swift */,
+			);
+			name = Libraries;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -186,6 +197,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A58723921F23ED84007A5F66 /* MatrixMath.swift in Sources */,
 				A54095721F1F87E000AB4D05 /* Floor.swift in Sources */,
 				A54095661F1E3B9000AB4D05 /* Renderer.swift in Sources */,
 				A54095761F20D39000AB4D05 /* RandomLines.swift in Sources */,

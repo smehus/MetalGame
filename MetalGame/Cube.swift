@@ -18,6 +18,8 @@ final class Cube: Node, Renderable, DefaultVertexDescriptorProtocol {
     var fragmentShader: ShaderFunction = .fragment
 
  
+    var modelConstants = ModelConstants()
+    
     var vertices: [Vertex] = [
         Vertex(position: float3(-1, 1, 1), color: float4(1, 0, 0, 1)),
         Vertex(position: float3(-1, -1, 1), color: float4(0, 1, 0, 1)),
@@ -53,7 +55,7 @@ final class Cube: Node, Renderable, DefaultVertexDescriptorProtocol {
         indexBuffer = device.makeBuffer(bytes: indices, length: indices.count * MemoryLayout<UInt16>.size, options: [])
     }
     
-    func performRender(with commandEncoder: MTLRenderCommandEncoder) {
+    func performRender(with commandEncoder: MTLRenderCommandEncoder, parentModelViewMatrix: matrix_float4x4) {
         guard
             let pipeline = pipelineState,
             let idxBuffer = indexBuffer
@@ -62,6 +64,8 @@ final class Cube: Node, Renderable, DefaultVertexDescriptorProtocol {
         commandEncoder.setRenderPipelineState(pipeline)
         
         commandEncoder.setVertexBuffer(vertexBuffer, offset: 0, at: 0)
+        //modelConstants.modelViewMatrix = parentModelViewMatrix
+        commandEncoder.setVertexBytes(&modelConstants, length: MemoryLayout<ModelConstants>.stride, at: 1)
         
         commandEncoder.drawIndexedPrimitives(type: .triangle, indexCount: indices.count, indexType: .uint16, indexBuffer: idxBuffer, indexBufferOffset: 0)
     }

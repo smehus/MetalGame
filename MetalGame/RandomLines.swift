@@ -110,7 +110,7 @@ final class RandomLines: Node, Renderable, DefaultVertexDescriptorProtocol {
         vertices = hillVertices
     }
     
-    func performRender(with commandEncoder: MTLRenderCommandEncoder) {
+    func performRender(with commandEncoder: MTLRenderCommandEncoder, parentModelViewMatrix: matrix_float4x4) {
         guard let pipeline = pipelineState else {
             assertionFailure()
             return

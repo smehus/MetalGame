@@ -19,11 +19,12 @@ class Scene: Node {
         super.init()
     }
 
+    let viewMatrix = matrix_float4x4(translationX: 0, y: 0, z: -10)
     
     /// Rendering command used on scenes
     func render(with commandEncoder: MTLRenderCommandEncoder, deltaTime: Float) {
         for child in children {
-            child.render(with: commandEncoder)
+            child.render(with: commandEncoder, parentModelViewMatrix: viewMatrix)
         }
     }
 }
