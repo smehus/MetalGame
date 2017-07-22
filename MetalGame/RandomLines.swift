@@ -41,7 +41,7 @@ class RandomLines: Node, Renderable, DefaultVertexDescriptorProtocol {
         var g = Float.random()
         var b = Float.random()
         
-        for i in stride(from: -1, through: 1, by: 0.2) {
+        for i in stride(from: -1, through: 1, by: 0.4) {
             let point = Float(i)
             r = Float.random()
             g = Float.random()
