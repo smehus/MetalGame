@@ -24,6 +24,10 @@ extension DefaultVertexDescriptorProtocol {
         descriptor.attributes[1].offset = MemoryLayout<float3>.stride
         descriptor.attributes[1].bufferIndex = 0
         
+        descriptor.attributes[2].format = .float2
+        descriptor.attributes[2].offset = MemoryLayout<float3>.stride + MemoryLayout<float4>.stride
+        descriptor.attributes[2].bufferIndex = 0
+        
         descriptor.layouts[0].stride = MemoryLayout<Vertex>.stride
         
         return descriptor

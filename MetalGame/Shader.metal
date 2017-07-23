@@ -36,6 +36,7 @@ vertex VertexOut vertex_shader(const VertexIn vertexIn [[ stage_in ]],
     
     float4x4 matrix = sceneConstants.projectionViewMatrix * modelConstants.modelViewMatrix;
     vertexOut.position = matrix * vertexIn.position;
+    vertexOut.textureCoordinates = vertexIn.textureCoordinates;
     vertexOut.color = vertexIn.color;
     
     return vertexOut;
@@ -52,6 +53,7 @@ fragment float4 fragment_shader(VertexOut inVertex [[stage_in]]) {
 fragment float4 textured_fragment(VertexOut inVertex [[stage_in ]],
                                   sampler sampler2d [[ sampler(0) ]],
                                   texture2d<float> texture [[ texture(0) ]]) {
+    
     float4 color = texture.sample(sampler2d, inVertex.textureCoordinates);
     return float4(color.r, color.g, color.b, 1.0);
     

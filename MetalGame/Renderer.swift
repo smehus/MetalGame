@@ -13,12 +13,22 @@ internal final class Renderer: NSObject {
     var commandQueue: MTLCommandQueue!
     var device: MTLDevice!
     var scene: Scene?
+    var samplerState: MTLSamplerState?
 
     init(device: MTLDevice) {
         self.device = device
         commandQueue = device.makeCommandQueue()
         
         super.init()
+        
+        buildSamplerState()
+    }
+    
+    private func buildSamplerState() {
+        let descriptor = MTLSamplerDescriptor()
+        descriptor.minFilter = .linear
+        descriptor.magFilter = .linear
+        samplerState = device.makeSamplerState(descriptor: descriptor)
     }
 }
 
@@ -40,6 +50,11 @@ extension Renderer: MTKViewDelegate {
         
         // used to tell Metal what drawing we actually want to do
         let commandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: descriptor)
+        
+        // Fragment Sampler state
+        commandEncoder.setFragmentSamplerState(samplerState, at: 0)
+        
+        // Culling
         commandEncoder.setFrontFacing(.counterClockwise)
         commandEncoder.setCullMode(.back)
         

@@ -25,16 +25,31 @@ final class Cube: Node, Renderable, DefaultVertexDescriptorProtocol, Texturable 
     var texture: MTLTexture?
     
     var vertices: [Vertex] = [
-        Vertex(position: float3(-1, 1, 1), color: float4(1, 0, 0, 1)),
-        Vertex(position: float3(-1, -1, 1), color: float4(0, 1, 0, 1)),
-        Vertex(position: float3(1, -1, 1), color: float4(0, 0, 1, 1)),
-        Vertex(position: float3(1, 1, 1), color: float4(1, 0, 1, 1)),
+        Vertex(position: float3(-1, 1, 1),   // 0 Front
+            color:    float4(1, 0, 0, 1),
+            texture:  float2(0, 0)),
+        Vertex(position: float3(-1, -1, 1),  // 1
+            color:    float4(0, 1, 0, 1),
+            texture:  float2(0, 1)),
+        Vertex(position: float3(1, -1, 1),   // 2
+            color:    float4(0, 0, 1, 1),
+            texture:  float2(1, 1)),
+        Vertex(position: float3(1, 1, 1),    // 3
+            color:    float4(1, 0, 1, 1),
+            texture:  float2(1, 0)),
         
-        
-        Vertex(position: float3(-1, 1, -1), color: float4(0, 0, 1, 1)),
-        Vertex(position: float3(-1, -1, -1), color: float4(0, 1, 0, 1)),
-        Vertex(position: float3(1, -1, -1), color: float4(1, 0, 0, 1)),
-        Vertex(position: float3(1, 1, -1), color: float4(1, 0, 1, 1))
+        Vertex(position: float3(-1, 1, -1),  // 4 Back
+            color:    float4(0, 0, 1, 1),
+            texture:  float2(1, 1)),
+        Vertex(position: float3(-1, -1, -1), // 5
+            color:    float4(0, 1, 0, 1),
+            texture:  float2(0, 1)),
+        Vertex(position: float3(1, -1, -1),  // 6
+            color:    float4(1, 0, 0, 1),
+            texture:  float2(0, 0)),
+        Vertex(position: float3(1, 1, -1),   // 7
+            color:    float4(1, 0, 1, 1),
+            texture:  float2(1, 0)),
     ]
     
     var indices: [UInt16] = [
@@ -55,6 +70,7 @@ final class Cube: Node, Renderable, DefaultVertexDescriptorProtocol, Texturable 
             texture = text
             fragmentShader = .texturedFragment
         }
+        
         
         buildBuffers(device: device)
         buildPipelineState(device: device)
@@ -78,6 +94,8 @@ final class Cube: Node, Renderable, DefaultVertexDescriptorProtocol, Texturable 
         modelConstants.modelViewMatrix = modelViewMatrix
         // Model constants perform all the translations to position the node correctly in the parent node
         commandEncoder.setVertexBytes(&modelConstants, length: MemoryLayout<ModelConstants>.stride, at: 1)
+        
+        commandEncoder.setFragmentTexture(texture, at: 0)
         
         commandEncoder.drawIndexedPrimitives(type: .triangle, indexCount: indices.count, indexType: .uint16, indexBuffer: idxBuffer, indexBufferOffset: 0)
     }

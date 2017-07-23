@@ -32,6 +32,12 @@ struct Vertex {
     var color: float4
     var texture: float2
     
+    init(position: float3, color: float4, texture: float2) {
+        self.position = position
+        self.color = color
+        self.texture = texture
+    }
+    
     init(position: float3, color: float4) {
         self.position = position
         self.color = color
@@ -51,7 +57,7 @@ enum ShaderFunction {
         case .fragment:
             return "fragment_shader"
         case .texturedFragment:
-            return ""
+            return "textured_fragment"
         }
     }
 }

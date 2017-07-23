@@ -18,7 +18,7 @@ final class GameScene: Scene {
     var model: Cube
     
     override init(device: MTLDevice, size: CGSize) {
-        model = Cube(device: device)
+        model = Cube(device: device, image: #imageLiteral(resourceName: "example"))
         super.init(device: device, size: size)
         add(model)
         
