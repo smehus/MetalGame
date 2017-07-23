@@ -40,6 +40,8 @@ extension Renderer: MTKViewDelegate {
         
         // used to tell Metal what drawing we actually want to do
         let commandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: descriptor)
+        commandEncoder.setFrontFacing(.counterClockwise)
+        commandEncoder.setCullMode(.back)
         
         let delta = 1 / Float(view.preferredFramesPerSecond)
         
