@@ -24,32 +24,19 @@ final class Cube: Node, Renderable, DefaultVertexDescriptorProtocol, Texturable 
     /// Texturable
     var texture: MTLTexture?
     
+    // TEXTURES DON'T RENDER CORRECTLY BECAUSE WE'RE USING INDEXED DRAWING. IF WE WANT TO RENDER 
+    // TEXTURES CORRECT, WE NEED TO DRAW PRIMITIVES AND SET TEXTURE VERTEX FOR EACH SIDE
     var vertices: [Vertex] = [
-        Vertex(position: float3(-1, 1, 1),   // 0 Front
-            color:    float4(1, 0, 0, 1),
-            texture:  float2(0, 0)),
-        Vertex(position: float3(-1, -1, 1),  // 1
-            color:    float4(0, 1, 0, 1),
-            texture:  float2(0, 1)),
-        Vertex(position: float3(1, -1, 1),   // 2
-            color:    float4(0, 0, 1, 1),
-            texture:  float2(1, 1)),
-        Vertex(position: float3(1, 1, 1),    // 3
-            color:    float4(1, 0, 1, 1),
-            texture:  float2(1, 0)),
+        Vertex(position: float3(-1, 1, 1), color: float4(1, 0, 0, 1), texture: float2(0, 0)),
+        Vertex(position: float3(-1, -1, 1), color: float4(0, 1, 0, 1), texture: float2(0, 1)),
+        Vertex(position: float3(1, -1, 1), color: float4(0, 0, 1, 1), texture: float2(1, 1)),
+        Vertex(position: float3(1, 1, 1), color: float4(1, 0, 1, 1), texture: float2(1, 0)),
         
-        Vertex(position: float3(-1, 1, -1),  // 4 Back
-            color:    float4(0, 0, 1, 1),
-            texture:  float2(1, 1)),
-        Vertex(position: float3(-1, -1, -1), // 5
-            color:    float4(0, 1, 0, 1),
-            texture:  float2(0, 1)),
-        Vertex(position: float3(1, -1, -1),  // 6
-            color:    float4(1, 0, 0, 1),
-            texture:  float2(0, 0)),
-        Vertex(position: float3(1, 1, -1),   // 7
-            color:    float4(1, 0, 1, 1),
-            texture:  float2(1, 0)),
+        
+        Vertex(position: float3(-1, 1, -1), color: float4(0, 0, 1, 1), texture: float2(1, 1)),
+        Vertex(position: float3(-1, -1, -1), color: float4(0, 1, 0, 1), texture: float2(0, 1)),
+        Vertex(position: float3(1, -1, -1), color: float4(1, 0, 0, 1), texture: float2(0, 0)),
+        Vertex(position: float3(1, 1, -1), color: float4(1, 0, 1, 1), texture: float2(1, 0))
     ]
     
     var indices: [UInt16] = [

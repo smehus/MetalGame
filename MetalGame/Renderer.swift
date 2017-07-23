@@ -14,6 +14,7 @@ internal final class Renderer: NSObject {
     var device: MTLDevice!
     var scene: Scene?
     var samplerState: MTLSamplerState?
+    var depthStencilState: MTLDepthStencilState?
 
     init(device: MTLDevice) {
         self.device = device
@@ -22,6 +23,7 @@ internal final class Renderer: NSObject {
         super.init()
         
         buildSamplerState()
+        buildDepthStencil()
     }
     
     private func buildSamplerState() {
@@ -29,6 +31,14 @@ internal final class Renderer: NSObject {
         descriptor.minFilter = .linear
         descriptor.magFilter = .linear
         samplerState = device.makeSamplerState(descriptor: descriptor)
+    }
+    
+    private func buildDepthStencil() {
+        let depthDescriptor = MTLDepthStencilDescriptor()
+        depthDescriptor.depthCompareFunction = .less
+        depthDescriptor.isDepthWriteEnabled = true
+        
+        depthStencilState = device.makeDepthStencilState(descriptor: depthDescriptor)
     }
 }
 
@@ -53,6 +63,9 @@ extension Renderer: MTKViewDelegate {
         
         // Fragment Sampler state
         commandEncoder.setFragmentSamplerState(samplerState, at: 0)
+        
+        // depth stencil
+        commandEncoder.setDepthStencilState(depthStencilState)
         
         // Culling
         commandEncoder.setFrontFacing(.counterClockwise)
