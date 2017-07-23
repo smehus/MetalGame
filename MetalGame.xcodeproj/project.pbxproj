@@ -26,6 +26,8 @@
 		A5BE41221F24CBAA0052E56A /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BE41211F24CBAA0052E56A /* Camera.swift */; };
 		A5BE41251F24D5B70052E56A /* Texturable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BE41241F24D5B70052E56A /* Texturable.swift */; };
 		A5BE41271F250E110052E56A /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BE41261F250E110052E56A /* Model.swift */; };
+		A5BE412B1F2514E70052E56A /* mushroom.obj in Resources */ = {isa = PBXBuildFile; fileRef = A5BE41291F2514E70052E56A /* mushroom.obj */; };
+		A5BE412C1F2514E70052E56A /* mushroom.png in Resources */ = {isa = PBXBuildFile; fileRef = A5BE412A1F2514E70052E56A /* mushroom.png */; };
 		A5EBEA191F221F9800B68E2E /* DefaultVertexDescriptorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EBEA181F221F9800B68E2E /* DefaultVertexDescriptorProtocol.swift */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +53,8 @@
 		A5BE41211F24CBAA0052E56A /* Camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		A5BE41241F24D5B70052E56A /* Texturable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Texturable.swift; sourceTree = "<group>"; };
 		A5BE41261F250E110052E56A /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		A5BE41291F2514E70052E56A /* mushroom.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mushroom.obj; sourceTree = "<group>"; };
+		A5BE412A1F2514E70052E56A /* mushroom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mushroom.png; sourceTree = "<group>"; };
 		A5EBEA181F221F9800B68E2E /* DefaultVertexDescriptorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultVertexDescriptorProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -84,6 +88,7 @@
 		A540954F1F1E33E000AB4D05 /* MetalGame */ = {
 			isa = PBXGroup;
 			children = (
+				A5BE41281F2514DB0052E56A /* Models */,
 				A5BE41231F24D5980052E56A /* Protocols */,
 				A58723931F23EE92007A5F66 /* Libraries */,
 				A5BE411E1F24022E0052E56A /* Scenes */,
@@ -149,6 +154,15 @@
 			name = Protocols;
 			sourceTree = "<group>";
 		};
+		A5BE41281F2514DB0052E56A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A5BE41291F2514E70052E56A /* mushroom.obj */,
+				A5BE412A1F2514E70052E56A /* mushroom.png */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -210,8 +224,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A540955B1F1E33E000AB4D05 /* LaunchScreen.storyboard in Resources */,
+				A5BE412C1F2514E70052E56A /* mushroom.png in Resources */,
 				A54095581F1E33E000AB4D05 /* Assets.xcassets in Resources */,
 				A54095561F1E33E000AB4D05 /* Main.storyboard in Resources */,
+				A5BE412B1F2514E70052E56A /* mushroom.obj in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,12 +8,12 @@
 
 import MetalKit
 
-final class Model: Node, Renderable, ModelVertexDescriptor {
+final class Model: Node, Renderable, ModelVertexDescriptor, Texturable {
     
     var meshes: [AnyObject]?
     
     var vertexBuffer: MTLBuffer?
-    
+    var texture: MTLTexture?
     var pipelineState: MTLRenderPipelineState?
     var vertexShader: ShaderFunction = .vertex
     var fragmentShader: ShaderFunction = .fragment
@@ -30,7 +30,40 @@ final class Model: Node, Renderable, ModelVertexDescriptor {
     }
     
     func performRender(with commandEncoder: MTLRenderCommandEncoder, modelViewMatrix: matrix_float4x4) {
+        guard let pipeline = pipelineState else { return }
         
+        commandEncoder.setVertexBuffer(vertexBuffer, offset: 0, at: 0)
+        
+        modelConstants.modelViewMatrix = modelViewMatrix
+        commandEncoder.setVertexBytes(&modelConstants, length: MemoryLayout<ModelConstants>.stride, at: 1)
+        
+        if let texture = self.texture {
+            commandEncoder.setFragmentTexture(texture, at: 0)
+        }
+        
+        commandEncoder.setRenderPipelineState(pipeline)
+        
+        guard let meshes = meshes as? [MTKMesh], !meshes.isEmpty else {
+            return
+        }
+        
+        render(meshes: meshes, commandEncorder: commandEncoder)
+    }
+    
+    private func render(meshes: [MTKMesh], commandEncorder: MTLRenderCommandEncoder) {
+        
+        for mesh in meshes {
+            let vertexBuffer = mesh.vertexBuffers[0]
+            commandEncorder.setVertexBuffer(vertexBuffer.buffer, offset: vertexBuffer.offset, at: 0)
+            
+            for subMesh in mesh.submeshes {
+                commandEncorder.drawIndexedPrimitives(type: subMesh.primitiveType,
+                                                      indexCount: subMesh.indexCount,
+                                                      indexType: subMesh.indexType,
+                                                      indexBuffer: subMesh.indexBuffer.buffer,
+                                                      indexBufferOffset: subMesh.indexBuffer.offset)
+            }
+        }
     }
 }
 
