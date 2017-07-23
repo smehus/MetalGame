@@ -8,17 +8,21 @@
 
 import MetalKit
 
-final class Cube: Node, Renderable, DefaultVertexDescriptorProtocol {
+final class Cube: Node, Renderable, DefaultVertexDescriptorProtocol, Texturable {
     
     var vertexBuffer: MTLBuffer?
     var indexBuffer: MTLBuffer?
     var pipelineState: MTLRenderPipelineState?
     
+    /// Shader functions
     var vertexShader: ShaderFunction = .vertex
     var fragmentShader: ShaderFunction = .fragment
 
- 
+    /// Holds the model view matrix to send to shader
     var modelConstants = ModelConstants()
+    
+    /// Texturable
+    var texture: MTLTexture?
     
     var vertices: [Vertex] = [
         Vertex(position: float3(-1, 1, 1), color: float4(1, 0, 0, 1)),
@@ -44,8 +48,14 @@ final class Cube: Node, Renderable, DefaultVertexDescriptorProtocol {
         1, 5, 6,     1, 6, 2   // Bottom
     ]
     
-    init(device: MTLDevice) {
+    init(device: MTLDevice, image: UIImage? = nil) {
         super.init()
+        
+        if let img = image, let text = loadTexture(device: device, image: img) {
+            texture = text
+            fragmentShader = .texturedFragment
+        }
+        
         buildBuffers(device: device)
         buildPipelineState(device: device)
     }

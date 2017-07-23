@@ -30,11 +30,19 @@ struct SceneConstants {
 struct Vertex {
     var position: float3
     var color: float4
+    var texture: float2
+    
+    init(position: float3, color: float4) {
+        self.position = position
+        self.color = color
+        texture = float2(1, 1)
+    }
 }
 
 enum ShaderFunction {
     case vertex
     case fragment
+    case texturedFragment
     
     var name: String {
         switch self {
@@ -42,6 +50,8 @@ enum ShaderFunction {
             return "vertex_shader"
         case .fragment:
             return "fragment_shader"
+        case .texturedFragment:
+            return ""
         }
     }
 }

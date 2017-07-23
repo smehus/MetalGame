@@ -20,11 +20,13 @@ struct ModelConstants {
 struct VertexIn {
     float4 position [[attribute(0)]];
     float4 color [[attribute(1)]] ;
+    float2 textureCoordinates [[ attribute(2) ]];
 };
 
 struct VertexOut {
     float4 position [[position]];
     float4 color;
+    float2 textureCoordinates;
 };
 
 vertex VertexOut vertex_shader(const VertexIn vertexIn [[ stage_in ]],
@@ -42,3 +44,20 @@ vertex VertexOut vertex_shader(const VertexIn vertexIn [[ stage_in ]],
 fragment float4 fragment_shader(VertexOut inVertex [[stage_in]]) {
     return inVertex.color;
 }
+
+
+
+// Textures
+
+fragment float4 textured_fragment(VertexOut inVertex [[stage_in ]],
+                                  sampler sampler2d [[ sampler(0) ]],
+                                  texture2d<float> texture [[ texture(0) ]]) {
+    float4 color = texture.sample(sampler2d, inVertex.textureCoordinates);
+    return float4(color.r, color.g, color.b, 1.0);
+    
+}
+
+
+
+
+

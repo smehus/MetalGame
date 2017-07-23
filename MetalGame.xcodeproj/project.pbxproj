@@ -24,6 +24,7 @@
 		A58723901F23E727007A5F66 /* Cube.swift in Sources */ = {isa = PBXBuildFile; fileRef = A587238F1F23E727007A5F66 /* Cube.swift */; };
 		A58723921F23ED84007A5F66 /* MatrixMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58723911F23ED84007A5F66 /* MatrixMath.swift */; };
 		A5BE41221F24CBAA0052E56A /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BE41211F24CBAA0052E56A /* Camera.swift */; };
+		A5BE41251F24D5B70052E56A /* Texturable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BE41241F24D5B70052E56A /* Texturable.swift */; };
 		A5EBEA191F221F9800B68E2E /* DefaultVertexDescriptorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EBEA181F221F9800B68E2E /* DefaultVertexDescriptorProtocol.swift */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,7 @@
 		A587238F1F23E727007A5F66 /* Cube.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cube.swift; sourceTree = "<group>"; };
 		A58723911F23ED84007A5F66 /* MatrixMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatrixMath.swift; sourceTree = "<group>"; };
 		A5BE41211F24CBAA0052E56A /* Camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
+		A5BE41241F24D5B70052E56A /* Texturable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Texturable.swift; sourceTree = "<group>"; };
 		A5EBEA181F221F9800B68E2E /* DefaultVertexDescriptorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultVertexDescriptorProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -80,14 +82,13 @@
 		A540954F1F1E33E000AB4D05 /* MetalGame */ = {
 			isa = PBXGroup;
 			children = (
+				A5BE41231F24D5980052E56A /* Protocols */,
 				A58723931F23EE92007A5F66 /* Libraries */,
 				A5BE411E1F24022E0052E56A /* Scenes */,
 				A54095701F1F87C000AB4D05 /* Nodes */,
 				A54095671F1E426D00AB4D05 /* Shaders */,
 				A54095651F1E3B9000AB4D05 /* Renderer.swift */,
-				A5EBEA181F221F9800B68E2E /* DefaultVertexDescriptorProtocol.swift */,
 				A54095631F1E35C500AB4D05 /* Types.swift */,
-				A54095771F20D3DD00AB4D05 /* Renderable.swift */,
 				A54095521F1E33E000AB4D05 /* ViewController.swift */,
 				A54095541F1E33E000AB4D05 /* Main.storyboard */,
 				A54095571F1E33E000AB4D05 /* Assets.xcassets */,
@@ -133,6 +134,16 @@
 				A540956E1F1F876600AB4D05 /* Scene.swift */,
 			);
 			name = Scenes;
+			sourceTree = "<group>";
+		};
+		A5BE41231F24D5980052E56A /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				A5EBEA181F221F9800B68E2E /* DefaultVertexDescriptorProtocol.swift */,
+				A54095771F20D3DD00AB4D05 /* Renderable.swift */,
+				A5BE41241F24D5B70052E56A /* Texturable.swift */,
+			);
+			name = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,6 +230,7 @@
 				A58723901F23E727007A5F66 /* Cube.swift in Sources */,
 				A54095531F1E33E000AB4D05 /* ViewController.swift in Sources */,
 				A540956D1F1F86B000AB4D05 /* Node.swift in Sources */,
+				A5BE41251F24D5B70052E56A /* Texturable.swift in Sources */,
 				A5BE41221F24CBAA0052E56A /* Camera.swift in Sources */,
 				A540956F1F1F876600AB4D05 /* Scene.swift in Sources */,
 				A54095691F1E427D00AB4D05 /* Shader.metal in Sources */,
