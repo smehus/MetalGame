@@ -25,6 +25,11 @@ final class Model: Node, Renderable, ModelVertexDescriptor, Texturable {
     init(device: MTLDevice, modelName: String) {
         self.modelName = modelName
         super.init()
+        
+        if let lTexture = loadTexture(device: device, image: #imageLiteral(resourceName: "mushroom.png")) {
+            texture = lTexture
+            fragmentShader = .texturedFragment
+        }
         loadModel(device: device, modelName: modelName)
         buildPipelineState(device: device)
     }

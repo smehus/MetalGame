@@ -33,6 +33,7 @@ class Scene: Node {
         
         update(with: deltaTime)
         for child in children {
+            // camera view matrix gets altered in the scene sublcass
             child.renderNode(with: commandEncoder, parentModelViewMatrix: camera.viewMatrix)
         }
     }
