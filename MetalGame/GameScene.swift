@@ -20,6 +20,8 @@ final class GameScene: Scene {
     override init(device: MTLDevice, size: CGSize) {
         model = Model(device: device, modelName: "mushroom")
         super.init(device: device, size: size)
+        model.specularIntensity = 1.0
+        model.shininess = 8.0
         add(model)
         
         setupCamera()

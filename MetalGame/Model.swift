@@ -41,6 +41,9 @@ final class Model: Node, Renderable, ModelVertexDescriptor, Texturable {
         
         modelConstants.modelViewMatrix = modelViewMatrix
         modelConstants.normalMatrix = modelViewMatrix.upperLeft3x3()
+        
+        modelConstants.shininess = shininess
+        modelConstants.specularIntensity = specularIntensity
         commandEncoder.setVertexBytes(&modelConstants, length: MemoryLayout<ModelConstants>.stride, at: 1)
         
         if let texture = self.texture {

@@ -16,6 +16,8 @@ struct SceneConstants {
 struct ModelConstants {
     float4x4 modelViewMatrix;
     float3x3 normalMatrix;
+    float specularIntensity;
+    float shininess;
 };
 
 struct VertexIn {
@@ -30,6 +32,9 @@ struct VertexOut {
     float4 color;
     float2 textureCoordinates;
     float3 normal;
+    float specularIntensity;
+    float shininess;
+    float3 eyePosition;
 };
 
 struct Light {
@@ -48,7 +53,12 @@ vertex VertexOut vertex_shader(const VertexIn vertexIn [[ stage_in ]],
     vertexOut.position = matrix * vertexIn.position;
     vertexOut.textureCoordinates = vertexIn.textureCoordinates;
     vertexOut.color = vertexIn.color;
+    vertexOut.shininess = modelConstants.shininess;
+    vertexOut.specularIntensity = modelConstants.specularIntensity;
     vertexOut.normal = modelConstants.normalMatrix * vertexIn.normal;
+    vertexOut.normal = modelConstants.normalMatrix * vertexIn.normal;
+    vertexOut.eyePosition = (modelConstants.modelViewMatrix * vertexIn.position).xyz;
+    
     return vertexOut;
 }
 
@@ -82,7 +92,17 @@ fragment float4 lit_textured_fragment(VertexOut inVertex [[stage_in ]],
     float diffuseFactor = saturate(-dot(normal, light.direction));
     float3 diffuseColor = light.color * light.diffuseIntensity * diffuseFactor;
     
-    color = color * float4((ambientColor + diffuseColor), 1);
+    // Specular
+    float3 eye = normalize(inVertex.eyePosition);
+    float3 reflection = reflect(light.direction, normal);
+    float specularFactor = pow(saturate(-dot(reflection, eye)), inVertex.shininess);
+    float3 specularColor = light.color * inVertex.specularIntensity * specularFactor;
+    
+    
+    color = color * float4((ambientColor + diffuseColor + specularColor), 1);
+    
+    if (color.a == 0)
+        discard_fragment();
     
     return float4(color.r, color.g, color.b, 1.0);
     
