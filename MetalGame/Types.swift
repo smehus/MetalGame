@@ -21,6 +21,7 @@ enum Colors {
 
 struct ModelConstants {
     var modelViewMatrix = matrix_identity_float4x4
+    var normalMatrix = matrix_identity_float3x3
 }
 
 struct SceneConstants {
@@ -30,6 +31,8 @@ struct SceneConstants {
 struct Light {
     var color = float3(1)
     var ambientIntensity: Float = 1.0
+    var diffuseIntensity: Float = 1.0
+    var direction = float3(0)
 }
 
 struct Vertex {

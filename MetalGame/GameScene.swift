@@ -24,8 +24,10 @@ final class GameScene: Scene {
         
         setupCamera()
         
-        light.color = float3(0, 0, 1)
-        light.ambientIntensity = 0.5
+        light.color = float3(1, 1, 1)
+        light.ambientIntensity = 0.2
+        light.diffuseIntensity = 0.8
+        light.direction = float3(0, 0, -1)
     }
     
     override func update(with deltaTime: Float) {

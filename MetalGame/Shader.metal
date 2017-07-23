@@ -15,23 +15,28 @@ struct SceneConstants {
 
 struct ModelConstants {
     float4x4 modelViewMatrix;
+    float3x3 normalMatrix;
 };
 
 struct VertexIn {
     float4 position [[attribute(0)]];
     float4 color [[attribute(1)]] ;
     float2 textureCoordinates [[ attribute(2) ]];
+    float3 normal [[ attribute(3) ]];
 };
 
 struct VertexOut {
     float4 position [[position]];
     float4 color;
     float2 textureCoordinates;
+    float3 normal;
 };
 
 struct Light {
     float3 color;
     float ambientIntensity;
+    float diffuseIntensity;
+    float3 direction;
 };
 
 vertex VertexOut vertex_shader(const VertexIn vertexIn [[ stage_in ]],
@@ -43,7 +48,7 @@ vertex VertexOut vertex_shader(const VertexIn vertexIn [[ stage_in ]],
     vertexOut.position = matrix * vertexIn.position;
     vertexOut.textureCoordinates = vertexIn.textureCoordinates;
     vertexOut.color = vertexIn.color;
-    
+    vertexOut.normal = modelConstants.normalMatrix * vertexIn.normal;
     return vertexOut;
 }
 
@@ -72,7 +77,12 @@ fragment float4 lit_textured_fragment(VertexOut inVertex [[stage_in ]],
     float4 color = texture.sample(sampler2d, inVertex.textureCoordinates);
     
     float3 ambientColor = light.color * light.ambientIntensity;
-    color = color * float4(ambientColor, 1);
+    
+    float3 normal = normalize(inVertex.normal);
+    float diffuseFactor = saturate(-dot(normal, light.direction));
+    float3 diffuseColor = light.color * light.diffuseIntensity * diffuseFactor;
+    
+    color = color * float4((ambientColor + diffuseColor), 1);
     
     return float4(color.r, color.g, color.b, 1.0);
     
