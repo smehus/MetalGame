@@ -32,18 +32,21 @@ class Node {
         children.append(child)
     }
     
-    func render(with commandEncoder: MTLRenderCommandEncoder, parentModelViewMatrix: matrix_float4x4) {
+    func renderNode(with commandEncoder: MTLRenderCommandEncoder, parentModelViewMatrix: matrix_float4x4) {
         
+        // Camera matrix multiplied by this nodes model matrix
+        // model view matrix = view matirx multiplied by the model matrix
+        // Nothing to do with vertices... kinda
         let modelViewMatrix = matrix_multiply(parentModelViewMatrix, modelMatrix)
         
         for child in children {
             /// Recursively calls this same function in order to climb down the ladder - eventually calling the perform render on all nodes
             /// Some nodes don't want to be renderd. i.e. parent container nodes
-            child.render(with: commandEncoder, parentModelViewMatrix: parentModelViewMatrix)
+            child.renderNode(with: commandEncoder, parentModelViewMatrix: parentModelViewMatrix)
         }
         
         if let renderable = self as? Renderable {
-            renderable.performRender(with: commandEncoder, parentModelViewMatrix: modelViewMatrix)
+            renderable.performRender(with: commandEncoder, modelViewMatrix: modelViewMatrix)
         }
     }
 }

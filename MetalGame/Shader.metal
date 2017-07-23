@@ -9,6 +9,10 @@
 #include <metal_stdlib>
 using namespace metal;
 
+struct SceneConstants {
+    float4x4 projectionViewMatrix;
+};
+
 struct ModelConstants {
     float4x4 modelViewMatrix;
 };
@@ -23,9 +27,13 @@ struct VertexOut {
     float4 color;
 };
 
-vertex VertexOut vertex_shader(const VertexIn vertexIn [[ stage_in ]], constant ModelConstants &modelConstants [[ buffer(1) ]]) {
+vertex VertexOut vertex_shader(const VertexIn vertexIn [[ stage_in ]],
+                               constant ModelConstants &modelConstants [[ buffer(1) ]],
+                               constant SceneConstants &sceneConstants [[ buffer (2) ]]) {
     VertexOut vertexOut;
-    vertexOut.position = modelConstants.modelViewMatrix * vertexIn.position;
+    
+    float4x4 matrix = sceneConstants.projectionViewMatrix * modelConstants.modelViewMatrix;
+    vertexOut.position = matrix * vertexIn.position;
     vertexOut.color = vertexIn.color;
     
     return vertexOut;

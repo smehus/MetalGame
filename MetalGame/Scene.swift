@@ -12,6 +12,9 @@ class Scene: Node {
     let device: MTLDevice
     let size: CGSize
     
+    var camera = Camera()
+    var sceneConstants = SceneConstants()
+    
     init(device: MTLDevice, size: CGSize) {
         self.device = device
         self.size = size
@@ -24,12 +27,17 @@ class Scene: Node {
     /// Rendering command used on scenes
     func render(with commandEncoder: MTLRenderCommandEncoder, deltaTime: Float) {
 
+        sceneConstants.projectionMatrix = camera.projectionMatrix
         
-        let viewMatrix = matrix_float4x4(translationX: 0, y: 0, z: -10)
+        commandEncoder.setVertexBytes(&sceneConstants, length: MemoryLayout<SceneConstants>.stride, at: 2)
         
         update(with: deltaTime)
         for child in children {
-            child.render(with: commandEncoder, parentModelViewMatrix: viewMatrix)
+            child.renderNode(with: commandEncoder, parentModelViewMatrix: camera.viewMatrix)
         }
+    }
+    
+    func sizeWillChange(to size: CGSize) {
+        camera.aspect = Float(size.width / size.height)
     }
 }

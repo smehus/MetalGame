@@ -17,7 +17,7 @@ protocol Renderable: class {
     var vertexShader: ShaderFunction { get set }
     var fragmentShader: ShaderFunction { get set }
     
-    func performRender(with commandEncoder: MTLRenderCommandEncoder, parentModelViewMatrix: matrix_float4x4)
+    func performRender(with commandEncoder: MTLRenderCommandEncoder, modelViewMatrix: matrix_float4x4)
     func buildPipelineState(device: MTLDevice)
 }
 

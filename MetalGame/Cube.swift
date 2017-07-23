@@ -55,7 +55,7 @@ final class Cube: Node, Renderable, DefaultVertexDescriptorProtocol {
         indexBuffer = device.makeBuffer(bytes: indices, length: indices.count * MemoryLayout<UInt16>.size, options: [])
     }
     
-    func performRender(with commandEncoder: MTLRenderCommandEncoder, parentModelViewMatrix: matrix_float4x4) {
+    func performRender(with commandEncoder: MTLRenderCommandEncoder, modelViewMatrix: matrix_float4x4) {
         guard
             let pipeline = pipelineState,
             let idxBuffer = indexBuffer
@@ -64,10 +64,6 @@ final class Cube: Node, Renderable, DefaultVertexDescriptorProtocol {
         commandEncoder.setRenderPipelineState(pipeline)
         
         commandEncoder.setVertexBuffer(vertexBuffer, offset: 0, at: 0)
-        
-        
-        let projectionMatrix = matrix_float4x4(projectionFov: radians(fromDegrees: 65), aspect: Float(750.0/1334.0), nearZ: 0.1, farZ: 100)
-        let modelViewMatrix = matrix_multiply(projectionMatrix, parentModelViewMatrix)
         
         modelConstants.modelViewMatrix = modelViewMatrix
         commandEncoder.setVertexBytes(&modelConstants, length: MemoryLayout<ModelConstants>.stride, at: 1)
