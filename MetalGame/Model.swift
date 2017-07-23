@@ -28,7 +28,7 @@ final class Model: Node, Renderable, ModelVertexDescriptor, Texturable {
         
         if let lTexture = loadTexture(device: device, image: #imageLiteral(resourceName: "mushroom.png")) {
             texture = lTexture
-            fragmentShader = .texturedFragment
+            fragmentShader = .texturedFragmentLit
         }
         loadModel(device: device, modelName: modelName)
         buildPipelineState(device: device)

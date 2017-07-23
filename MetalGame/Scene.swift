@@ -13,6 +13,7 @@ class Scene: Node {
     let size: CGSize
     
     var camera = Camera()
+    var light = Light()
     var sceneConstants = SceneConstants()
     
     init(device: MTLDevice, size: CGSize) {
@@ -27,8 +28,9 @@ class Scene: Node {
     /// Rendering command used on scenes
     func render(with commandEncoder: MTLRenderCommandEncoder, deltaTime: Float) {
 
-        sceneConstants.projectionMatrix = camera.projectionMatrix
+        commandEncoder.setFragmentBytes(&light, length: MemoryLayout<Light>.stride, at: 3)
         
+        sceneConstants.projectionMatrix = camera.projectionMatrix
         commandEncoder.setVertexBytes(&sceneConstants, length: MemoryLayout<SceneConstants>.stride, at: 2)
         
         update(with: deltaTime)

@@ -29,6 +29,11 @@ struct VertexOut {
     float2 textureCoordinates;
 };
 
+struct Light {
+    float3 color;
+    float ambientIntensity;
+};
+
 vertex VertexOut vertex_shader(const VertexIn vertexIn [[ stage_in ]],
                                constant ModelConstants &modelConstants [[ buffer(1) ]],
                                constant SceneConstants &sceneConstants [[ buffer (2) ]]) {
@@ -59,6 +64,19 @@ fragment float4 textured_fragment(VertexOut inVertex [[stage_in ]],
     
 }
 
+fragment float4 lit_textured_fragment(VertexOut inVertex [[stage_in ]],
+                                  sampler sampler2d [[ sampler(0) ]],
+                                  constant Light &light [[ buffer(3) ]],
+                                  texture2d<float> texture [[ texture(0) ]]) {
+    
+    float4 color = texture.sample(sampler2d, inVertex.textureCoordinates);
+    
+    float3 ambientColor = light.color * light.ambientIntensity;
+    color = color * float4(ambientColor, 1);
+    
+    return float4(color.r, color.g, color.b, 1.0);
+    
+}
 
 
 

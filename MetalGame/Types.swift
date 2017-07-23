@@ -27,6 +27,11 @@ struct SceneConstants {
     var projectionMatrix = matrix_identity_float4x4
 }
 
+struct Light {
+    var color = float3(1)
+    var ambientIntensity: Float = 1.0
+}
+
 struct Vertex {
     var position: float3
     var color: float4
@@ -49,6 +54,7 @@ enum ShaderFunction {
     case vertex
     case fragment
     case texturedFragment
+    case texturedFragmentLit
     
     var name: String {
         switch self {
@@ -58,6 +64,8 @@ enum ShaderFunction {
             return "fragment_shader"
         case .texturedFragment:
             return "textured_fragment"
+        case .texturedFragmentLit:
+            return "lit_textured_fragment"
         }
     }
 }
