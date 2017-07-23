@@ -9,7 +9,7 @@
 import MetalKit
 
 protocol Renderable: class {
-    var vertices: [Vertex]  { get }
+
     var vertexBuffer: MTLBuffer? { get set }
     var vertexDescriptor: MTLVertexDescriptor  { get }
     var pipelineState: MTLRenderPipelineState? { get set }

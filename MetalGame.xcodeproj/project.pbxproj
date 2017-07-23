@@ -25,6 +25,7 @@
 		A58723921F23ED84007A5F66 /* MatrixMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58723911F23ED84007A5F66 /* MatrixMath.swift */; };
 		A5BE41221F24CBAA0052E56A /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BE41211F24CBAA0052E56A /* Camera.swift */; };
 		A5BE41251F24D5B70052E56A /* Texturable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BE41241F24D5B70052E56A /* Texturable.swift */; };
+		A5BE41271F250E110052E56A /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BE41261F250E110052E56A /* Model.swift */; };
 		A5EBEA191F221F9800B68E2E /* DefaultVertexDescriptorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EBEA181F221F9800B68E2E /* DefaultVertexDescriptorProtocol.swift */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +50,7 @@
 		A58723911F23ED84007A5F66 /* MatrixMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatrixMath.swift; sourceTree = "<group>"; };
 		A5BE41211F24CBAA0052E56A /* Camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		A5BE41241F24D5B70052E56A /* Texturable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Texturable.swift; sourceTree = "<group>"; };
+		A5BE41261F250E110052E56A /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		A5EBEA181F221F9800B68E2E /* DefaultVertexDescriptorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultVertexDescriptorProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -114,6 +116,7 @@
 				A54095751F20D39000AB4D05 /* RandomLines.swift */,
 				A54095711F1F87E000AB4D05 /* Floor.swift */,
 				A587238F1F23E727007A5F66 /* Cube.swift */,
+				A5BE41261F250E110052E56A /* Model.swift */,
 			);
 			name = Nodes;
 			sourceTree = "<group>";
@@ -229,6 +232,7 @@
 				A54095781F20D3DD00AB4D05 /* Renderable.swift in Sources */,
 				A58723901F23E727007A5F66 /* Cube.swift in Sources */,
 				A54095531F1E33E000AB4D05 /* ViewController.swift in Sources */,
+				A5BE41271F250E110052E56A /* Model.swift in Sources */,
 				A540956D1F1F86B000AB4D05 /* Node.swift in Sources */,
 				A5BE41251F24D5B70052E56A /* Texturable.swift in Sources */,
 				A5BE41221F24CBAA0052E56A /* Camera.swift in Sources */,
