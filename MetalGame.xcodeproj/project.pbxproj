@@ -28,6 +28,10 @@
 		A5BE41271F250E110052E56A /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BE41261F250E110052E56A /* Model.swift */; };
 		A5BE412B1F2514E70052E56A /* mushroom.obj in Resources */ = {isa = PBXBuildFile; fileRef = A5BE41291F2514E70052E56A /* mushroom.obj */; };
 		A5BE412C1F2514E70052E56A /* mushroom.png in Resources */ = {isa = PBXBuildFile; fileRef = A5BE412A1F2514E70052E56A /* mushroom.png */; };
+		A5BE41311F256B920052E56A /* FirstHuman.png in Resources */ = {isa = PBXBuildFile; fileRef = A5BE412F1F256B920052E56A /* FirstHuman.png */; };
+		A5BE41321F256B920052E56A /* FirstHuman.obj in Resources */ = {isa = PBXBuildFile; fileRef = A5BE41301F256B920052E56A /* FirstHuman.obj */; };
+		A5BE41341F256DAF0052E56A /* FirstHumanHandStand.obj in Resources */ = {isa = PBXBuildFile; fileRef = A5BE41331F256DAF0052E56A /* FirstHumanHandStand.obj */; };
+		A5BE41361F256DBB0052E56A /* FirstHumanHandStand.png in Resources */ = {isa = PBXBuildFile; fileRef = A5BE41351F256DBB0052E56A /* FirstHumanHandStand.png */; };
 		A5EBEA191F221F9800B68E2E /* DefaultVertexDescriptorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EBEA181F221F9800B68E2E /* DefaultVertexDescriptorProtocol.swift */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +59,10 @@
 		A5BE41261F250E110052E56A /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		A5BE41291F2514E70052E56A /* mushroom.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mushroom.obj; sourceTree = "<group>"; };
 		A5BE412A1F2514E70052E56A /* mushroom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mushroom.png; sourceTree = "<group>"; };
+		A5BE412F1F256B920052E56A /* FirstHuman.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FirstHuman.png; sourceTree = "<group>"; };
+		A5BE41301F256B920052E56A /* FirstHuman.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FirstHuman.obj; sourceTree = "<group>"; };
+		A5BE41331F256DAF0052E56A /* FirstHumanHandStand.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FirstHumanHandStand.obj; sourceTree = "<group>"; };
+		A5BE41351F256DBB0052E56A /* FirstHumanHandStand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FirstHumanHandStand.png; sourceTree = "<group>"; };
 		A5EBEA181F221F9800B68E2E /* DefaultVertexDescriptorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultVertexDescriptorProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -157,6 +165,10 @@
 		A5BE41281F2514DB0052E56A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A5BE41351F256DBB0052E56A /* FirstHumanHandStand.png */,
+				A5BE41331F256DAF0052E56A /* FirstHumanHandStand.obj */,
+				A5BE412F1F256B920052E56A /* FirstHuman.png */,
+				A5BE41301F256B920052E56A /* FirstHuman.obj */,
 				A5BE41291F2514E70052E56A /* mushroom.obj */,
 				A5BE412A1F2514E70052E56A /* mushroom.png */,
 			);
@@ -223,10 +235,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5BE41321F256B920052E56A /* FirstHuman.obj in Resources */,
 				A540955B1F1E33E000AB4D05 /* LaunchScreen.storyboard in Resources */,
 				A5BE412C1F2514E70052E56A /* mushroom.png in Resources */,
 				A54095581F1E33E000AB4D05 /* Assets.xcassets in Resources */,
 				A54095561F1E33E000AB4D05 /* Main.storyboard in Resources */,
+				A5BE41361F256DBB0052E56A /* FirstHumanHandStand.png in Resources */,
+				A5BE41311F256B920052E56A /* FirstHuman.png in Resources */,
+				A5BE41341F256DAF0052E56A /* FirstHumanHandStand.obj in Resources */,
 				A5BE412B1F2514E70052E56A /* mushroom.obj in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

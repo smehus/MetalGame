@@ -8,6 +8,29 @@
 
 import MetalKit
 
+enum SpriteModel {
+    case normal
+    case handstand
+    
+    var name: String {
+        switch self {
+        case .normal:
+            return "FirstHuman"
+        case .handstand:
+            return "FirstHumanHandStand"
+        }
+    }
+    
+    var texture: UIImage {
+        switch self {
+        case .normal:
+            return #imageLiteral(resourceName: "FirstHuman.png")
+        case .handstand:
+            return #imageLiteral(resourceName: "FirstHumanHandStand.png")
+        }
+    }
+}
+
 final class Model: Node, Renderable, ModelVertexDescriptor, Texturable {
     
     var meshes: [AnyObject]?
@@ -22,11 +45,11 @@ final class Model: Node, Renderable, ModelVertexDescriptor, Texturable {
     
     private let modelName: String
     
-    init(device: MTLDevice, modelName: String) {
-        self.modelName = modelName
+    init(device: MTLDevice, model: SpriteModel) {
+        self.modelName = model.name
         super.init()
         
-        if let lTexture = loadTexture(device: device, image: #imageLiteral(resourceName: "mushroom.png")) {
+        if let lTexture = loadTexture(device: device, image: model.texture) {
             texture = lTexture
             fragmentShader = .texturedFragmentLit
         }

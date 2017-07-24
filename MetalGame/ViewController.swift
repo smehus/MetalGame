@@ -31,5 +31,19 @@ internal final class ViewController: UIViewController {
         
         metalView.delegate = renderer
     }
-    
+}
+
+extension ViewController {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        renderer?.scene?.touchesBegan(view, touches:touches, with: event)
+    }
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        renderer?.scene?.touchesMoved(view, touches: touches, with: event)
+    }
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        renderer?.scene?.touchesEnded(view, touches: touches, with: event)
+    }
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        renderer?.scene?.touchesCancelled(view, touches: touches, with: event)
+    }
 }

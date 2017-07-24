@@ -15,6 +15,8 @@ final class Floor: Node, Renderable, DefaultVertexDescriptorProtocol {
     var vertexShader: ShaderFunction = .vertex
     var fragmentShader: ShaderFunction = .fragment
     
+    var modelConstants = ModelConstants()
+    
     var vertices: [Vertex] = [
         Vertex(position: float3(0, -1, 0), color: float4(1, 0, 0, 1)),
         Vertex(position: float3(-1, 1, 0), color: float4(0, 1, 0, 1)),
@@ -39,6 +41,9 @@ final class Floor: Node, Renderable, DefaultVertexDescriptorProtocol {
         
         // Configure shaders
         commandEncoder.setRenderPipelineState(pipeline)
+        
+        modelConstants.modelViewMatrix = modelViewMatrix
+        commandEncoder.setVertexBytes(&modelConstants, length: MemoryLayout<ModelConstants>.stride, at: 1)
         
         commandEncoder.setVertexBuffer(vertexBuffer, offset: 0, at: 0)
         
