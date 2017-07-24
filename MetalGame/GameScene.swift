@@ -16,15 +16,20 @@ final class GameScene: Scene {
     }
     
     var model: Model
-//    var cube: Cube
+    var floor: Floor
     var previousTouchLocation: CGPoint = .zero
     
     override init(device: MTLDevice, size: CGSize) {
-//        cube = Cube(device: device)
+        floor = Floor(device: device)
         model = Model(device: device, model: .handstand)
         super.init(device: device, size: size)
-//        cube.position.z = -10
-//        add(cube)
+        
+        floor.position.z = -10
+        floor.position.y = -10
+        floor.scale.x = 10.0
+        floor.scale.y = 20.0
+        floor.rotation.x = 45
+        add(floor)
         
         model.specularIntensity = 0.8
         model.shininess = 8.0
@@ -59,8 +64,8 @@ final class GameScene: Scene {
         let delta = CGPoint(x: previousTouchLocation.x - touchLocation.x,
                             y: previousTouchLocation.y - touchLocation.y)
         let sensitivity: Float = 0.01
-        model.rotation.x += Float(delta.y) * sensitivity
-        model.rotation.y += Float(delta.x) * sensitivity
+        camera.rotation.x += Float(delta.y) * sensitivity
+        camera.rotation.y += Float(delta.x) * sensitivity
         previousTouchLocation = touchLocation
     }
     
