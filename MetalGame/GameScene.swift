@@ -20,15 +20,15 @@ final class GameScene: Scene {
     var previousTouchLocation: CGPoint = .zero
     
     override init(device: MTLDevice, size: CGSize) {
-        floor = Floor(device: device)
+        floor = Floor(device: device, image: #imageLiteral(resourceName: "wallTexture"))
         model = Model(device: device, model: .handstand)
         super.init(device: device, size: size)
         
         floor.position.z = -10
-        floor.position.y = -10
+        floor.position.y = -16.5
         floor.scale.x = 10.0
         floor.scale.y = 20.0
-        floor.rotation.x = 45
+        floor.rotation.x = 90
         add(floor)
         
         model.specularIntensity = 0.8

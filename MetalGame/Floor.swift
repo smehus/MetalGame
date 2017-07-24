@@ -8,7 +8,7 @@
 
 import MetalKit
 
-final class Floor: Node, Renderable, DefaultVertexDescriptorProtocol {
+final class Floor: Node, Renderable, DefaultVertexDescriptorProtocol, Texturable {
     
     var vertexBuffer: MTLBuffer?
     var indexBuffer: MTLBuffer?
@@ -17,6 +17,9 @@ final class Floor: Node, Renderable, DefaultVertexDescriptorProtocol {
     var fragmentShader: ShaderFunction = .fragment
     
     var modelConstants = ModelConstants()
+    
+    /// Texturable
+    var texture: MTLTexture?
     
     var vertices: [Vertex] = [
         Vertex(position: float3(-1, 1, 1), color: float4(1, 0, 0, 1), texture: float2(0, 0)),
@@ -29,9 +32,14 @@ final class Floor: Node, Renderable, DefaultVertexDescriptorProtocol {
         0, 1, 2, 0, 2, 3,
     ]
     
-    init(device: MTLDevice) {
+    init(device: MTLDevice, image: UIImage? = nil) {
         super.init()
-        // Handled in Renderable extension
+        
+        if let img = image, let text = loadTexture(device: device, image: img) {
+            texture = text
+            fragmentShader = .texturedFragment
+        }
+        
         buildBuffers(device: device)
         buildPipelineState(device: device)
     }
@@ -57,6 +65,7 @@ final class Floor: Node, Renderable, DefaultVertexDescriptorProtocol {
         // Model constants perform all the translations to position the node correctly in the parent node
         commandEncoder.setVertexBytes(&modelConstants, length: MemoryLayout<ModelConstants>.stride, at: 1)
         
+        commandEncoder.setFragmentTexture(texture, at: 0)
         
         commandEncoder.drawIndexedPrimitives(type: .triangle, indexCount: indices.count, indexType: .uint16, indexBuffer: idxBuffer, indexBufferOffset: 0)
     }
